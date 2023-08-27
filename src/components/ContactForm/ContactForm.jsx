@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import React, { Component } from 'react';
 import css from './ContactForm.module.css';
 
 export class ContactForm extends Component {
@@ -16,7 +16,7 @@ export class ContactForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    this.props.hendleSubmit(this.state);
+    this.props.handleSubmit(this.state);
     form.reset();
   };
 
@@ -24,7 +24,7 @@ export class ContactForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <form className={css.form} onSubmit={this.hendleSubmit}>
+      <form className={css.form} onSubmit={this.handleSubmit}>
         <label className={css.formLabel}>Name </label>
         <input
           className={css.formName}
