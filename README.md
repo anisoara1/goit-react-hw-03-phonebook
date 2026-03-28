@@ -1,113 +1,101 @@
-# React homework template
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+# 📞 React Phonebook — Contact Management App
 
-## Создание репозитория по шаблону
+O aplicație React modernă pentru gestionarea contactelor, construită ca parte dintr-o serie de proiecte practice orientate spre consolidarea abilităților în React, componentizare, state management și interacțiunea cu localStorage.
 
-Используй этот репозиторий организации GoIT как шаблон для создания репозитория
-своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
-`«Create a new repository»`, как показано на изображении.
+🔗 **Demo Live:** https://anisoara1.github.io/goit-react-hw-03-phonebook/
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+---
 
-На следующем шаге откроется страница создания нового репозитория. Заполни поле
-его имени, убедись что репозиторий публичный, после чего нажми кнопку
-`«Create repository from template»`.
+## ✨ Funcționalități principale
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+- **Adăugare contacte** cu nume și număr de telefon.
+- **Prevenirea duplicatelor** prin verificarea numelor existente.
+- **Filtrare în timp real** a contactelor după nume.
+- **Ștergere contacte** individuale.
+- **Persistență locală** prin `localStorage` — datele rămân salvate după refresh.
+- **Interfață simplă și intuitivă**, potrivită pentru utilizatori non-tehnici.
+- **Componentizare curată** și separare logică a responsabilităților.
 
-После того как репозиторий будет создан, необходимо перейти в настройки
-созданного репозитория на вкладку `Settings` > `Actions` > `General` как
-показано на изображении.
+---
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+## 🛠️ Tehnologii utilizate
 
-Проскролив страницу до самого конца, в секции `«Workflow permissions»` выбери
-опцию `«Read and write permissions»` и поставь галочку в чекбоксе. Это
-необходимо для автоматизации процесса деплоя проекта.
+| Tehnologie | Rol |
+|-----------|------|
+| **React** | UI, componentizare, state management |
+| **JavaScript (ES6+)** | logică aplicație |
+| **CSS / Styled Components (dacă ai folosit)** | stilizare |
+| **localStorage API** | salvarea datelor |
+| **GitHub Pages** | hosting static |
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+---
 
-Теперь у тебя есть личный репозиторий проекта, со структурой файлов и папок
-репозитория-шаблона. Далее работай с ним как с любым другим личным репозиторием,
-клонируй его себе на компьютер, пиши код, делай коммиты и отправляй их на
-GitHub.
+## 📂 Structura proiectului
 
-## Подготовка к работе
-
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Установи базовые зависимости проекта командой `npm install`.
-3. Запусти режим разработки, выполнив команду `npm start`.
-4. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
-
-## Деплой
-
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
-
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
+```
+goit-react-hw-03-phonebook/
+│── src/
+│   ├── components/
+│   │   ├── ContactForm/
+│   │   ├── ContactList/
+│   │   ├── Filter/
+│   ├── App.jsx
+│   ├── index.js
+│── public/
+│── package.json
+│── README.md
 ```
 
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
+---
 
-![GitHub Pages settings](./assets/repo-settings.png)
+## 🔍 Detalii despre implementare
 
-### Статус деплоя
+### Gestionarea stării
+Aplicația folosește `setState` (sau `useState` dacă ai migrat la hooks) pentru:
 
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
+- lista de contacte
+- filtrul de căutare
 
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
+### Persistența datelor
+Contactele sunt salvate automat în `localStorage`:
 
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
+- la montarea aplicației, datele sunt încărcate
+- la fiecare modificare, lista este rescrisă
 
-![Deployment status](./assets/deploy-status.png)
+### Validarea contactelor
+Înainte de a adăuga un contact nou, aplicația verifică dacă numele există deja și afișează un mesaj de eroare.
 
-### Живая страница
+---
 
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
+## 📱 Responsive Design
 
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
+Aplicația este optimizată pentru:
 
-### Маршрутизация
+- telefoane mobile  
+- tablete  
+- desktop  
 
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеш в начале строки обязателен.
+Layout-ul este simplu și clar, astfel încât utilizatorii să poată gestiona rapid contactele.
 
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
+---
 
-## Как это работает
+## 🎯 Obiectivul proiectului
 
-![How it works](./assets/how-it-works.png)
+Proiectul demonstrează:
 
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+- înțelegerea componentelor controlate
+- gestionarea stării în React
+- lucrul cu formulare
+- persistența datelor în browser
+- organizarea logică a componentelor
+- implementarea unui flux CRUD simplu
+
+Este un proiect excelent pentru a arăta recrutoriilor că stăpânești fundamentele React.
+
+---
+
+## 📬 Contact
+
+- **GitHub:** https://github.com/anisoara1  
+- **Live Demo:** https://anisoara1.github.io/goit-react-hw-03-phonebook/
